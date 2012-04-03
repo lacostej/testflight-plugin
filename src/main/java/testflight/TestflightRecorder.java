@@ -179,6 +179,7 @@ public class TestflightRecorder extends Recorder
         }
         catch (Exception e)
         {
+            e.printStackTrace(listener.getLogger());
             listener.getLogger().println(e);
             return false;
         }
