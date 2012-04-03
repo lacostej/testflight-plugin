@@ -92,8 +92,6 @@ public class TestflightRecorder extends Recorder
         return proxyPort;
     }
 
-    private TestflightUploader uploader = new TestflightUploader();
-    
     @DataBoundConstructor
     public TestflightRecorder(String apiToken, String teamToken, Boolean notifyTeam, String buildNotes, String filePath, String dsymPath, String lists, Boolean replace, String proxyHost, String proxyUser, String proxyPass, int proxyPort)
     {
@@ -154,6 +152,7 @@ public class TestflightRecorder extends Recorder
                 dsymFile = getFileLocally(build.getWorkspace(), vars.expand(dsymPath), tempDir, true);
             }
 
+            TestflightUploader uploader = new TestflightUploader();
             TestflightUploader.UploadRequest ur = createUploadRequest(file, dsymFile);
 
             final Map parsedMap;
