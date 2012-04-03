@@ -208,8 +208,8 @@ public class TestflightRecorder extends Recorder
         TestflightUploader.UploadRequest ur = new TestflightUploader.UploadRequest();
         ur.apiToken = apiToken;
         ur.buildNotes = buildNotes;
-        ur.dsymPath = dsymFile;
-        ur.filePath = file;
+        ur.dsymFile = dsymFile;
+        ur.file = file;
         ur.lists = lists;
         ur.notifyTeam = notifyTeam;
         ur.proxyHost = proxyHost;

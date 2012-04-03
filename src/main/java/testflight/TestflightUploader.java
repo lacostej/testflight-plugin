@@ -31,8 +31,8 @@ public class TestflightUploader {
         String teamToken;
         Boolean notifyTeam;
         String buildNotes;
-        File filePath;
-        File dsymPath;
+        File file;
+        File dsymFile;
         String lists;
         Boolean replace;
         String proxyHost;
@@ -58,7 +58,7 @@ public class TestflightUploader {
 
         HttpHost targetHost = new HttpHost("testflightapp.com");
         HttpPost httpPost = new HttpPost("/api/builds.json");
-        FileBody fileBody = new FileBody(ur.filePath);
+        FileBody fileBody = new FileBody(ur.file);
 
         MultipartEntity entity = new MultipartEntity();
         entity.addPart("api_token", new StringBody(ur.apiToken));
@@ -66,8 +66,8 @@ public class TestflightUploader {
         entity.addPart("notes", new StringBody(ur.buildNotes));
         entity.addPart("file", fileBody);
 
-        if (ur.dsymPath != null) {
-            FileBody dsymFileBody = new FileBody(ur.dsymPath);
+        if (ur.dsymFile != null) {
+            FileBody dsymFileBody = new FileBody(ur.dsymFile);
             entity.addPart("dsym", dsymFileBody);
         }
 
@@ -102,8 +102,8 @@ public class TestflightUploader {
         r.teamToken = args[1];
         r.buildNotes = args[2];
         File file = new File(args[3]);
-        r.filePath = file;
-        r.dsymPath = null;
+        r.file = file;
+        r.dsymFile = null;
         r.notifyTeam = true;
         r.replace = true;
         r.lists = args[4];
